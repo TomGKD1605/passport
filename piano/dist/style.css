@@ -1,0 +1,112 @@
+* {
+  position: relative;
+  vertical-align: top;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.centerbox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 20%);
+  text-align: center;
+  width: 100%;
+}
+
+.keyboard {
+  box-shadow: 0px 0px 40px -5px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.pianokey {
+  display: inline-block;
+  cursor: pointer;
+}
+.pianokey .white {
+  width: 44px;
+  height: 300px;
+  box-sizing: border-box;
+  border-right: 1px solid #eee;
+  transform: translate(-3px, -3px);
+  transition: 0.1s;
+}
+.pianokey .white:hover {
+  transform: translate(0px, 0px);
+  background-color: #eee;
+}
+.pianokey .white.playing {
+  background-color: #eee;
+  transform: translate(0px, 0px);
+}
+.pianokey .black {
+  position: absolute;
+  top: 0px;
+  background-color: #333;
+  width: 22px;
+  height: 165px;
+  margin-left: -11px;
+  margin-right: -11px;
+  box-sizing: border-box;
+  z-index: 3;
+  transform: translate(-3px, -3px);
+  transition: 0.1s;
+}
+.pianokey .black:hover {
+  transform: translate(0px, 0px);
+  background-color: #585858;
+}
+.pianokey .black.playing {
+  transform: translate(0px, 0px);
+  background-color: #585858;
+}
+.pianokey .label {
+  position: absolute;
+  color: rgba(88, 88, 88, 0.7);
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+}
+
+.notes_list li {
+  display: inline-block;
+  border-right: 1px solid #000;
+  padding: 2px 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.notes_list li:hover {
+  background-color: #e1e1e1;
+}
+.notes_list li.playing {
+  background-color: #d5d5d5;
+}
+.notes_list li .time {
+  font-size: 8px;
+  opacity: 0.3;
+}
+.notes_list li .num {
+  font-size: 16px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  border: 1px solid;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #333;
+  color: white;
+}

@@ -1,0 +1,29 @@
+#app
+  
+  .audiopaly(v-for="pack in soundpack")
+    //- label {{pack.num}} 
+    audio( v-bind:data-num="pack.num") 
+      source(v-bind:src="pack.url")
+  .centerbox
+    .keyboard
+      .pianokey(v-for="key in display_keys")
+        .white(v-on:click="addnote(key.num)" v-if='key.type==\"white\"' v-bind:class="get_current_highlight(key.num,key.key)?'playing':''") 
+          .label {{String.fromCharCode(key.key)}}
+        .black(v-on:click="addnote(key.num)" v-if='key.type==\"black\"')  
+          .label {{String.fromCharCode(key.key)}}
+        
+    .controls
+      ul.notes_list(v-if="notes.length>0")
+        li(v-for="(note,id) in notes" v-bind:class="now_note_id-1==id?'playing':''")
+            .num {{note.num}}
+            .time {{note.time}}
+    
+    .btn
+      button(v-on:click="playnext(1)") playnext
+      button(v-on:click="startplay()" v-if='play_time<=1') startplay
+      button(v-on:click="stopplay()" v-if='play_time>1') stopplay
+      button(v-on:click="startrecord()" v-if='record_time<=0') record
+      button(v-on:click="stoprecord()" v-if='record_time>1') stoprecord
+      button(v-on:click="notes=[]") clear
+  
+      button(v-on:click="load_sample()" ) sample
